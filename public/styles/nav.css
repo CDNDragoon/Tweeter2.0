@@ -1,0 +1,43 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: #4056a1;
+  height: 120px;
+  width: 100%;
+  padding: 1.5em;
+  z-index: 1;
+  top: 0px;
+  position: sticky;
+}
+
+span {
+  color: #ffffff;
+  font-family: "bungee";
+  font-size: 1.5em;
+}
+
+#compose {
+  color: #ffffff;
+  background-color: transparent;
+  opacity: 90%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+#compose:hover {
+  opacity: 100%;
+}
+
+#compose-button {
+  display: flex;
+  flex-direction: row;
+  color: #ffffff;
+  background-color: transparent;
+}
+
+.fa-angle-double-down {
+  color: darkorange;
+}
