@@ -1,0 +1,136 @@
+.tweetcontainer {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+article {
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+  word-wrap: break-word;
+  margin: 10px 5px 10px 5px;
+}
+
+.tweetcontainer header {
+  height: 65px;
+  flex-direction: row;
+  display: inline-flex;
+  justify-content: space-around;
+  background-color: #4056a1;
+  background-image: none;
+  color: white;
+}
+
+.profile-placeholder {
+  width: 50px;
+  height: auto;
+  align-self: flex-start;
+  margin: 6px 10px 16px 10px;
+  background-color: white;
+}
+
+.tweet-body {
+  padding: 10px;
+  height: 100px;
+}
+
+.tweetcontainer footer {
+  border-top-color: black;
+  border-top-width: 2px;
+  border-top-style: solid;
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  margin: 5px 5px 5px 5px;
+  font-size: medium;
+}
+
+.user-handle {
+  text-align: right;
+  flex-grow: 2;
+  color: white;
+  margin-right: 25px;
+  opacity: 60%;
+}
+
+.users-name {
+  margin-left: 20px;
+}
+
+article:hover {
+  box-shadow: rgba(0, 0, 0, 0.4) 4px 4px 4px;
+}
+
+article:hover .user-handle {
+  opacity: 90%;
+}
+
+.timestamp {
+  margin-top: 11.5px;
+}
+
+.user-buttons {
+  margin-top: 12.5px;
+  opacity: 60%;
+}
+
+.fa-thumbs-up {
+  margin-left: 5px;
+}
+
+.fa-recycle {
+  margin-left: 5px;
+}
+
+.fa-flag {
+  margin-left: 5px;
+  margin-right: 7.5px;
+}
+
+.fa-thumbs-up:hover {
+  color: #4056a1;
+}
+
+.fa-recycle:hover {
+  color: green;
+}
+
+.fa-flag:hover {
+  color: red;
+}
+
+.fa-thumbs-up:active {
+  position: relative;
+  left: 1px;
+  top: 1px;
+  box-shadow: none;
+}
+
+.fa-recycle:active {
+  position: relative;
+  left: 1px;
+  top: 1px;
+  box-shadow: none;
+}
+
+.fa-keyboard:active {
+  position: relative;
+  left: 1px;
+  top: 1px;
+  box-shadow: none;
+}
+
+.fa-exclamation-circle {
+  color: red;
+}
+
+.message {
+  border-color: red;
+  border-width: 2px;
+  border-style: dotted;
+  color: darkorange;
+  text-align: center;
+  margin: 15px 30px 15px 30px;
+}

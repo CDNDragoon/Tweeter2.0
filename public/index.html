@@ -24,14 +24,17 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/newtweets.css" type="text/css" />
-
+    <link rel="stylesheet" href="/styles/container.css" type="text/css" />
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
-    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+    <script
+      type="text/javascript"
+      src="/scripts/composer-char-counter.js"
+    ></script>
   </head>
 
   <body>
@@ -53,15 +56,41 @@
       </div>
     </header>
     <main class="container">
-      <form id="tweetform"><label class="pretext" for="tweettext">What are you humming about?</label>
+      <form id="tweetform">
+        <label class="pretext" for="tweettext"
+          >What are you humming about?</label
+        >
         <textarea name="text" id="tweettext"></textarea>
-      <div class="subnewtweet">
-      <button type="submit" method="POST" action="/tweets">Tweet</button>
-      <output name="counter" class="counter" for="tweettext">140</output>
-    </div>
-  </form>
-      <!-- <section class="newTwitt">
-      </section> -->
+        <div class="subnewtweet">
+          <button type="submit" method="POST" action="/tweets">Tweet</button>
+          <output name="counter" class="counter" for="tweettext">140</output>
+        </div>
+      </form>
+      <section class="tweetcontainer">
+        <article>
+          <header>
+            <img
+              class="profile-placeholder"
+              src="/images/profile-place-holder.png"
+            />
+            <h4 class="users-name">Jedi Master Yoda</h4>
+            <h5 class="user-handle">Little Yoda</h5>
+          </header>
+          <body>
+            <div class="tweet-body">Do or do not, There is no try.</div>
+          </body>
+          <footer>
+            <div class="timestamp">
+              <label>10 days ago</label>
+            </div>
+            <div class="user-buttons">
+              <i class="far fa-thumbs-up fa-lg"></i>
+              <i class="fas fa-recycle fa-lg"></i>
+              <i class="far fa-flag"></i>
+            </div>
+          </footer>
+        </article>
+      </section>
     </main>
     <!-- Page-specific (main) content here -->
     <main class="container"></main>
