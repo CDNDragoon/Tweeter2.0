@@ -1,28 +1,3 @@
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-];
-
 let createTweetElement = function(obj) {
   let htmlUnit = `
   <article>
@@ -49,24 +24,49 @@ let createTweetElement = function(obj) {
 };
 
 const renderTweets = function(tweets) {
+  $('.tweetcontainer').empty();
   for (let tweet of tweets) {
     const newhtmlUnit = createTweetElement(tweet);
     $('.tweetcontainer').append(newhtmlUnit)
   }
 };
 
+const loadTweets = function() {
+  let url = 'http://localhost:8080/tweets';
+  $.ajax({
+    url,
+    method: "GET"
+  })
+  .done((result) => {
+ renderTweets(result);
+ })
+  .fail(() => console.log('fail'))
+  .always(() => console.log('as always; this request is completed.'))
+};
+
+const postTweets = function(formData) {
+ $.ajax({
+   method: "POST",
+   url: 'http://localhost:8080/tweets',
+   data: formData,
+   success: function() {
+     console.log('tweet successfuly added in database');
+     loadTweets()
+   }
+ })
+   .done(() => $('textarea').val(''))
+   .fail(() => console.log('failed to post'))
+};
+
 $(document).ready(function() {
-  renderTweets(data)
+  loadTweets()
 
 $('#tweetform').on('submit', function(event) {
   event.preventDefault();
-  $.ajax({
-    method: "POST",
-    url: 'http://localhost:8080/tweets',
-    data: $(this).serialize(),
-    success: function() {
-      console.log('tweet successfuly added in database');
-    }
-  })
+  const tweet = $(this).children("textarea").val();
+  if (tweet !== "" && tweet.length <= 140) {
+   const formData = $(this).serialize();
+   postTweets(formData);
+  }
 })
 });
