@@ -1,3 +1,5 @@
+const safeHTML = `<p>${escape(textFromUser)}</p>`;
+
 let createTweetElement = function(obj) {
   let htmlUnit = `
   <article>
@@ -7,7 +9,7 @@ let createTweetElement = function(obj) {
       <h5 class="user-handle">${obj.user.handle}</h5>
     </header>
     <body><div class='tweet-body'>
-      ${obj.content.text}
+    ${escape(obj.content.text)}
     </div></body>
     <footer>
       <div class="timestamp">
