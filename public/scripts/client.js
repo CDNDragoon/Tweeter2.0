@@ -91,4 +91,11 @@ $(document).ready(function () {
       postTweets(formData);
     }
   });
+  $(".fa-angle-double-down").on("click", function() {
+    if ($("#tweetform").first().is(":hidden")) {
+      $("#tweetform").slideDown(1000)
+    } else {
+      $("#tweetform").hide(1000)
+    }
+  })
 });
