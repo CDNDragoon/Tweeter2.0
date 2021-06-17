@@ -27,4 +27,10 @@ body {
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
-
+ @media all and (min-width: 800px) {
+  .responsive {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}

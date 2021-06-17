@@ -9,3 +9,17 @@ header {
   background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
   z-index: 0;
 }
+
+@media all and (min-width: 800px) {
+  .profile {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 5em;
+    height: 350px;
+    width: 350px;
+  }
+  .profile-pic {
+    height: 200px;
+    width: auto;
+  }
+}

@@ -41,3 +41,13 @@ span {
 .fa-angle-double-down {
   color: darkorange;
 }
+
+@media all and (max-width: 800px) {
+  nav {
+    background-color: darkorange;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+  }
+  .fa-angle-double-down {
+    color: red;
+  }
+}
