@@ -84,7 +84,7 @@ article:hover .user-handle {
   margin-left: 5px;
 }
 
-.fa-flag {
+.fa-keyboard {
   margin-left: 5px;
   margin-right: 7.5px;
 }
@@ -97,7 +97,7 @@ article:hover .user-handle {
   color: green;
 }
 
-.fa-flag:hover {
+.fa-keyboard:hover {
   color: red;
 }
 
@@ -133,4 +133,8 @@ article:hover .user-handle {
   color: darkorange;
   text-align: center;
   margin: 15px 30px 15px 30px;
+}
+
+textarea {
+  resize: none;
 }

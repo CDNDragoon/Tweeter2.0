@@ -1,6 +1,10 @@
-const safeHTML = `<p>${escape(textFromUser)}</p>`;
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 
-let createTweetElement = function(obj) {
+let createTweetElement = function (obj) {
   let htmlUnit = `
   <article>
     <header>
@@ -21,54 +25,70 @@ let createTweetElement = function(obj) {
       <i class="far fa-keyboard fa-lg"></i>
     </div>
     </footer>
-  </article>`
+  </article>`;
   return htmlUnit;
 };
 
-const renderTweets = function(tweets) {
-  $('.tweetcontainer').empty();
+const renderTweets = function (tweets) {
+  $(".tweetcontainer").empty();
   for (let tweet of tweets) {
     const newhtmlUnit = createTweetElement(tweet);
-    $('.tweetcontainer').append(newhtmlUnit)
+    $(".tweetcontainer").append(newhtmlUnit);
   }
 };
 
-const loadTweets = function() {
-  let url = 'http://localhost:8080/tweets';
+const loadTweets = function () {
+  let url = "http://localhost:8080/tweets";
   $.ajax({
     url,
-    method: "GET"
+    method: "GET",
   })
-  .done((result) => {
- renderTweets(result);
- })
-  .fail(() => console.log('fail'))
-  .always(() => console.log('as always; this request is completed.'))
+    .done((result) => {
+      renderTweets(result);
+    })
+    .fail(() => console.log("fail"))
+    .always(() => console.log("as always; this request is completed."));
 };
 
-const postTweets = function(formData) {
- $.ajax({
-   method: "POST",
-   url: 'http://localhost:8080/tweets',
-   data: formData,
-   success: function() {
-     console.log('tweet successfuly added in database');
-     loadTweets()
-   }
- })
-   .done(() => $('textarea').val(''))
-   .fail(() => console.log('failed to post'))
+const postTweets = function (formData) {
+  $.ajax({
+    method: "POST",
+    url: "http://localhost:8080/tweets",
+    data: formData,
+    success: function () {
+      console.log("tweet successfuly added in database");
+      loadTweets();
+      $("output").replaceWith(`<output name="counter" class="counter" for="tweettext">140</output>`)
+    },
+  })
+    .done(() => $("textarea").val(""))
+    .fail(() => console.log("failed to post"));
 };
 
-$(document).ready(function() {
-  loadTweets()
-
-$('#tweetform').on('submit', function(event) {
-  event.preventDefault();
-  const tweet = $(this).children("textarea").val();
-  if (tweet !== "" && tweet.length <= 140) {
-   const formData = $(this).serialize();
-   postTweets(formData);
+const message = function (err) {
+  let message = "";
+  if (err === "empty") {
+    message = "Tweet cannot be empty";
+  } else {
+    message = "Tweets cannot exced 140 characters";
   }
-})
+  return `<div class = 'message'>${message}</div> `;
+};
+
+$(document).ready(function () {
+  loadTweets();
+
+  $("#tweetform").on("submit", function (event) {
+    event.preventDefault();
+    let tweet = $(this).children("textarea").val();
+    tweet = tweet.trim()
+    if (tweet === "") {
+      $(".warning").html(message("empty")).fadeIn("fast").fadeOut(3000) 
+    } else if (tweet.length > 140) {
+      $(".warning").html(message("140")).fadeIn("fast").fadeOut(3000)
+    } else {
+      const formData = $(this).serialize();
+      postTweets(formData);
+    }
+  });
 });
