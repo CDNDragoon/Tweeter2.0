@@ -58,7 +58,9 @@ const postTweets = function (formData) {
     success: function () {
       console.log("tweet successfuly added in database");
       loadTweets();
-      $("output").replaceWith(`<output name="counter" class="counter" for="tweettext">140</output>`)
+      $("output").replaceWith(
+        `<output name="counter" class="counter" for="tweettext">140</output>`
+      );
     },
   })
     .done(() => $("textarea").val(""))
@@ -81,21 +83,21 @@ $(document).ready(function () {
   $("#tweetform").on("submit", function (event) {
     event.preventDefault();
     let tweet = $(this).children("textarea").val();
-    tweet = tweet.trim()
+    tweet = tweet.trim();
     if (tweet === "") {
-      $(".warning").html(message("empty")).fadeIn("fast").fadeOut(3000) 
+      $(".warning").html(message("empty")).fadeIn("fast").fadeOut(3000);
     } else if (tweet.length > 140) {
-      $(".warning").html(message("140")).fadeIn("fast").fadeOut(3000)
+      $(".warning").html(message("140")).fadeIn("fast").fadeOut(3000);
     } else {
       const formData = $(this).serialize();
       postTweets(formData);
     }
   });
-  $(".fa-angle-double-down").on("click", function() {
+  $(".fa-angle-double-down").on("click", function () {
     if ($("#tweetform").first().is(":hidden")) {
-      $("#tweetform").slideDown(1000)
+      $("#tweetform").slideDown(1000);
     } else {
-      $("#tweetform").hide(1000)
+      $("#tweetform").hide(1000);
     }
-  })
+  });
 });

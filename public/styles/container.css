@@ -142,3 +142,7 @@ textarea {
 #tweetform {
   display: none;
 }
+
+.container {
+  z-index: 0;
+}
